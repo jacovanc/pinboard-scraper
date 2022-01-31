@@ -16,8 +16,6 @@ class PinboardPost extends Model
         'tags' => 'array'
     ];
 
-	//TODO: Add laravel/ui package dependency to readme: npm install && npm run dev
-
 	public static function allWithTags($tags) {
 		$data = DB::table('pinboard_posts')
 			->whereJsonContains('tags', '[laravel]')

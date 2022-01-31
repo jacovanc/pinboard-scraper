@@ -26,7 +26,6 @@ class PinboardScraperService
      * @return Crawler
 	*/
     private function scrapeURL($url) {
-		// TODO: Add to readme dependency for goutte package
 		$client = new Client(HttpClient::create(['timeout' => 60]));
 		$crawler = $client->request('GET', $url);
 
@@ -57,7 +56,6 @@ class PinboardScraperService
 			$descriptionNode = $subCrawler->filter('.description');
 			$description = $descriptionNode->count() > 0 ? $descriptionNode->text() : null;
 
-			// TODO: CHECK IF TITLE CONTAINS ONE OF THE TAGS: laravel, vue, php or api - only save if it does
 			// Fetch tags data
 			$tags = Array();
 			$match = false; // Set to true when correct tag is found
@@ -69,12 +67,6 @@ class PinboardScraperService
 				}
 			});
 			$tags = json_encode($tags); // Convert to JSON for saving to Database
-
-			// Debug
-			// print "URL: " . $url . "\n";
-			// print "Title: " . $title . "\n";
-			// print "Description: " . $description . "\n";
-			// print "Tags: " . $tags . "\n";
 
 			// Save to DB
 			if($match) {

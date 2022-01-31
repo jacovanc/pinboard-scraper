@@ -30,7 +30,7 @@
 		data() {
 			return {
 				posts: null,
-				filters: ['laravel'], // TODO connect to inputs
+				filters: ['laravel'],
 				isLoading: true,
 			}
 

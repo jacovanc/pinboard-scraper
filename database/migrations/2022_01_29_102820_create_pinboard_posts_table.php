@@ -13,7 +13,6 @@ class CreatePinboardPostsTable extends Migration
      */
     public function up()
     {
-		// TODO: Add to readme that you must create a MYSQL DB with the name pinboard_scraper and setup user/pass config
         Schema::create('pinboard_posts', function (Blueprint $table) {
             $table->id();
 			$table->string('url');
