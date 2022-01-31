@@ -1,28 +1,30 @@
 <template>
 	<div>
-		<div class="container" v-if="posts != null && posts.data.length > 0">
-			<div class="filters">
-				<input checked v-model="filters" type="checkbox" name="tag_filter" value="laravel" id="laravel">
-				<label for="laravel">Laravel</label>
-				<input v-model="filters" type="checkbox" name="tag_filter" value="vue" id="vue">
-				<label for="vue">Vue</label>
-				<input v-model="filters" type="checkbox" name="tag_filter" value="php" id="php">
-				<label for="php">PHP</label>
-				<input v-model="filters" type="checkbox" name="tag_filter" value="api" id="api">
-				<label for="api">API</label>
-			</div>
-			<div class="loading" v-if="isLoading">
-				<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> 
-			</div>
-			<Post
-				v-for="post in posts.data"
-				v-bind:key="post.title"
-				v-bind:post="post"
-				v-bind:filters="filters"
-			/>
+		<div class="loading" v-if="isLoading">
+			<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> 
 		</div>
-		<div class="container" v-else>
-			There are no pinboard posts! (Please see README and run command)
+		<div v-if="posts != null">
+			<div class="container" v-if="!isLoading && posts.data.length > 0">
+				<div class="filters">
+					<input checked v-model="filters" type="checkbox" name="tag_filter" value="laravel" id="laravel">
+					<label for="laravel">Laravel</label>
+					<input v-model="filters" type="checkbox" name="tag_filter" value="vue" id="vue">
+					<label for="vue">Vue</label>
+					<input v-model="filters" type="checkbox" name="tag_filter" value="php" id="php">
+					<label for="php">PHP</label>
+					<input v-model="filters" type="checkbox" name="tag_filter" value="api" id="api">
+					<label for="api">API</label>
+				</div>
+				<Post
+					v-for="post in posts.data"
+					v-bind:key="post.title"
+					v-bind:post="post"
+					v-bind:filters="filters"
+				/>
+			</div>
+			<div class="container" v-if="posts.data.length == 0">
+				There are no pinboard posts! (Please see README and run command)
+			</div>
 		</div>
 	</div>
 </template>

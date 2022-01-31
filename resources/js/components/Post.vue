@@ -14,11 +14,13 @@
 		name: 'PinboardPosts',
 		props: ['post', 'filters'],
 		methods: {
+			// Determine if array contains all values from another array
 			containsFilters(array, filters) {
 				return filters.every(value => array.includes(value));
 			}
 		},
 		computed: {
+			// Returned a parsed version of the Post Tags as array
 			tagsArray() {
 				return JSON.parse(this.post.tags);
 			}

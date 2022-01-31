@@ -20,4 +20,4 @@ Run laravel:
 
 ## Command 
 The pinboard scraper command can be run with: 
-> php pinboard:scraper
+> php artisan pinboard:scraper
