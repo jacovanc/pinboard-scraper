@@ -18,8 +18,8 @@ class CreatePinboardPostsTable extends Migration
             $table->id();
 			$table->string('url');
 			$table->string('title');
-			$table->string('description');
-			$table->string('tags');
+			$table->longText('description');
+			$table->json('tags');
             $table->timestamps();
         });
     }
