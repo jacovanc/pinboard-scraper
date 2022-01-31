@@ -18,3 +18,6 @@ Install composer dependencies:
 Run laravel:
 > php artisan serve
 
+## Command 
+The pinboard scraper command can be run with: 
+> php pinboard:scraper
